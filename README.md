@@ -1,27 +1,32 @@
-# Free Developer Portfolio Template by Vito Medlej
+# 박준용 — Portfolio
 
-This is an open-source portfolio website template for developers. Showcase your skills, projects, and experience with this customizable and easy-to-use template.
+전기공학 전공, 고장 허용 제어와 로봇 시스템에 집중하는 포트폴리오 사이트입니다.
 
-## Features
+**Live: https://portfolio-app-nine-gules.vercel.app**
 
-- Animations
-- Responsive design
-- Customizable sections for skills, projects, and experience
-- Contact form
-- Social media links
+## 대표 프로젝트
 
-## Getting Started
+- **Fault-Tolerant Robot Hand** — 손가락별 전류를 실시간 감시하다 고장을 감지하면 0.08초 안에 인접 손가락이 대신 파지하는 분산형 고장 허용 로봇핸드. MediaPipe로 21개 손 랜드마크를 추출해 실시간 미러링 제어. 제3회 전국 소프트웨어 성과 공유 포럼 본선 진출.
+- **B.SORI Project 시즌2** — AMR과 로봇팔을 결합해 이동과 조작을 동시에 수행하는 24시간 무인 간병 로봇. 부산권 대학 연합 캡스톤 프로젝트.
 
-To get started with this template, follow these steps:
+## Tech Stack
 
-1. Clone or download this repository to your local machine.
-2. Install the dependencies
-3. Deploy the website to your preferred hosting service.
+Next.js · React · TypeScript · MUI · GSAP
 
-## Contributing
+## 로컬 실행
 
-Contributions to this project are welcome! If you have an idea for a new feature or improvement, please open an issue to discuss it. Pull requests are also welcome.
+```bash
+npm install
+npm run dev
+```
 
-## License
+## Deploy
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+```bash
+npx vercel build --prod --yes
+npx vercel deploy --prebuilt --prod --yes
+```
+
+---
+
+[VitoMedlej/free-developer-portfolio-template](https://github.com/VitoMedlej/free-developer-portfolio-template) (MIT) 기반으로 제작했습니다.
