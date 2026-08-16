@@ -18,41 +18,23 @@ const Layout = ({navbarSx, title ,children ,desc } : ILayout) => {
 
     <>
     <Head >
-        <title>{title || "Vito Medlej Personal Portfolio | Lebanese Web Developer"}</title>
+        <title>{title || "박준용 — Fault-Tolerant Robotics Portfolio"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="shortcut icon" href="https://res.cloudinary.com/dwcu3wcol/image/upload/v1657099811/log_nkmcys.jpg" />
-  
-   
-    
-<meta name="description" content={`${desc || 'Vito Medlej personal portfolio, An expert in UI/UX and building complex websites and applications'}`} />
+
+<meta name="description" content={`${desc || '박준용, 동아대학교 전기공학과 4학년. 전류 기반 고장 감지와 분산 제어로 멈추지 않는 로봇 시스템을 만듭니다.'}`} />
 
 
-<meta property="og:title" content="Vito Medlej Personal Portfolio | Lebanese Web Developer" />
+<meta property="og:title" content="박준용 — Fault-Tolerant Robotics Portfolio" />
 
 
-<meta property="og:url" content="https://elvito.netlify.app" />
+<meta property="og:description" content="전류 기반 고장 감지와 분산 제어로 멈추지 않는 로봇 시스템을 만듭니다."/>
 
-
-<meta property="og:description" content="Vito Medlej | Web Developer based in Lebanon. And this is my Portfolio and my blog "/>
-
-
-<meta property="og:image" content="https://res.cloudinary.com/dwcu3wcol/image/upload/v1658929513/log-removebg-preview_fygpsd.png"/>
-
-{/* <!-- Og Type -->
-<meta property="og:type" content="article" /> */}
-   
-   
-   <meta httpEquiv="content-language" content="en"/>
+   <meta httpEquiv="content-language" content="ko"/>
     <meta charSet="UTF-8"/>
     <meta name="robots" content="index, follow"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    {/* <meta name="description" content="Site Meta Description" /> */}
-    <meta name="keywords" content="Personal Portfolio" />
-    <meta name="author" content="Vito Medlej" />
-    <meta name="publisher" content="publisher"/>
-    <meta name="copyright" content="copyright"/>
-    <meta name="page-topic" content="Web Development | Blog"/>
-    <meta name="page-type" content="Blogging"/>
+    <meta name="keywords" content="Personal Portfolio, Robotics, Embedded" />
+    <meta name="author" content="박준용" />
     <meta name="audience" content="Everyone"/>
     {/* <!-- Facebook, whatsapp, instagram, twitter and other popular social media --> */}
     {/* <meta property="og:title" content={title}/> */}

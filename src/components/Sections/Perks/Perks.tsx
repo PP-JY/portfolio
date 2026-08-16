@@ -4,9 +4,9 @@ import {useEffect} from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import MainTitleAnimation from '../../../gsap/MainTitleAnimation';
-import HandymanIcon from '@mui/icons-material/Handyman';
-import HttpIcon from '@mui/icons-material/Http';
-import DevicesIcon from '@mui/icons-material/Devices';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 export const centeredStyles = {
     alignItems: 'center',
@@ -21,19 +21,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 const perksArray = [{
-    title:'Continuous support',
-    Icon:HandymanIcon,
-    text:'I will advance your web-based software to keep it efficient, competitive on the market. Using a well-established DevOps processes, It helps me roll out urgent updates within few hours and release new, planned functional modules every other week.',
+    title:'고장 감지 설계',
+    Icon:ReportProblemIcon,
+    text:'전류 파형을 분석해 고장을 실시간으로 감지하고, 0.08초 안에 자동으로 대응하는 분산 제어 시스템을 설계합니다. 문제를 회피하지 않고 견디는 시스템을 만드는 게 목표입니다.',
 },
 {
-    title : 'Back-end development',
-    text : 'I accurately implement the business logic of your web app on the back end. I always rely on proven frameworks to ensure fast and quality coding. And I build well structured APIs to integrate your web app with corporate or third-party systems and services',
-    Icon :  HttpIcon,
+    title : '임베디드 · 하드웨어',
+    text : 'ESP32와 라즈베리파이로 실시간 제어를 구현하고, KiCad/EasyEDA로 PCB를 직접 설계합니다. 아이디어를 손으로 만질 수 있는 물건으로 끝까지 완성하는 걸 좋아합니다.',
+    Icon :  DeveloperBoardIcon,
 }   ,
 {
-    title : 'Frontend design/dev',
-    Icon : DevicesIcon,
-    text : 'As a web expert I tend to closely analyze the user audience to understand their needs and reflect these findings in UI design. Having agreed on the look and feel of a web app with project stakeholders, I push to bring it to life with smart front-end technologies.'
+    title : '팀 협업 · 발표',
+    Icon : GroupsIcon,
+    text : '캡스톤과 대학 연합 프로젝트에서 팀원들과 설계를 나누고 발표해왔습니다. 전국 소프트웨어 성과 공유 포럼 본선 진출 경험이 있습니다.'
 }
 ]
 const Perks = () => {
@@ -63,7 +63,7 @@ const Perks = () => {
                 }
             }}
                 fontWeight='600'>
-                You&lsquo;re Safe And in Good Hands
+                What I Bring
             </Typography>
             <Typography
                 variant='h2'
@@ -78,7 +78,7 @@ const Perks = () => {
                     sm: '1em'
                 }
             }}>
-                Customer satisfaction comes first, and in order to do that I decided to pickup skills and principles to provide quality service.
+                고장 나도 멈추지 않는 시스템을 만들기 위해 쌓아온 것들입니다.
             </Typography>
 
             <Box

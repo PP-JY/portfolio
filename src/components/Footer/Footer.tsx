@@ -16,10 +16,7 @@ function Copyright() {
             
 
             <Typography variant='h1' fontSize='1em'>
-                {'Copyright © '}
-                <Link color="inherit" target='_blank'  rel="noreferrer" href="https://onbeirut.onrender.com">
-                    onbeirut.onrender.com
-                </Link>{' '} {new Date().getFullYear()}
+                {'Copyright © 박준용 '}{new Date().getFullYear()}
                 {'.'}
             </Typography>
         </Box>
@@ -65,9 +62,7 @@ function Footer() {
 
                         <Box sx={styles}>
                             <Typography variant='h3' fontSize='1em'>
-                                Hi, my name is Vito Medlej and I have created the OnBeirut Agency which aims to solve various issues small lebanese
-                                businesses face. You are free to use the website as a template for yourself as long as you
-                                give credit.
+                                동아대학교 전기공학과 박준용입니다. 전류 기반 고장 감지와 분산 제어로 멈추지 않는 로봇 시스템을 만듭니다.
                             </Typography>
                         </Box>
 
@@ -92,10 +87,8 @@ function Footer() {
                     <Grid item xs={12} sm={3} md={3}>
                         <Typography variant='h1' fontSize='1.4em' fontWeight='400'>Contact</Typography>
                         <Box className='link' sx={styles}>
-                            <a target='_blank' rel="noreferrer" href='https://github.com/VitoMedlej'>Github</a>
-                            <Typography variant='h1' fontSize='1em'>vito.medlej@gmail.com</Typography>
-                            <Typography variant='h1' fontSize='1em'>Lebanon/Beirut</Typography>
-                            <Typography variant='h1' fontSize='1em'>+961/81826445</Typography>
+                            <a href='mailto:russiaassa63@naver.com'>russiaassa63@naver.com</a>
+                            <Typography variant='h1' fontSize='1em'>동아대학교 전기공학과</Typography>
                         </Box>
                     </Grid>
                 </Grid>

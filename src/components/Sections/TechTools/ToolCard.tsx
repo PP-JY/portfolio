@@ -1,11 +1,9 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Image from 'next/image'
-import {IToolCard} from '../../../Types/Types';
 import {centeredStyles} from '../Perks/Perks';
 import {useEffect} from 'react';
 import gsap from 'gsap'
-const ToolCard = ({title, svg, filter, className} : IToolCard) => {
+const ToolCard = ({title, Icon, className} : any) => {
 
     useEffect(() => {
 
@@ -44,15 +42,7 @@ const ToolCard = ({title, svg, filter, className} : IToolCard) => {
                 }
             }}>
 
-                <Image
-                    
-                    alt='Icon'
-                    className={`${filter
-                    ? 'filter '
-                    : ''} icon`}
-                    width='100%'
-                    height='100%'
-                    src={`${svg}`}/>
+                {Icon && <Icon sx={{width: '100%', height: '100%'}} className='icon'/>}
             </Box>
             <Typography
                 variant='h3'

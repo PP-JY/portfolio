@@ -72,7 +72,7 @@ const CTA = () => {
                         }
                     }}
                         fontWeight='600'>
-                        What&apos;s holding you back? Send me a message!
+                        협업이나 채용 관련 제안, 편하게 연락 주세요
                     </Typography>
                     <Box
                         sx={{
@@ -98,7 +98,7 @@ const CTA = () => {
                             padding: '.5em 3.5em'
                         }}
                             variant='outlined'>
-                            Contact
+                            연락하기
                         </Button>
                     </Box>
 

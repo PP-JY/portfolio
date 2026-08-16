@@ -63,7 +63,7 @@ const Projects = ({projectsArray} : IProjects[] | any) => {
                             }
                         }}
                             fontWeight='600'>
-                            Successful Projects I&apos;m Proud Of
+                            Featured Projects
                         </Typography>
                         <Typography
                             className='title4 t25o0'
@@ -76,7 +76,7 @@ const Projects = ({projectsArray} : IProjects[] | any) => {
                                 sm: '1em'
                             }
                         }}>
-                            No better way to get experience than real-life projects
+                            고장 나도 멈추지 않는 시스템을 직접 설계하고 만든 프로젝트들
                         </Typography>
 
                     </Grid>

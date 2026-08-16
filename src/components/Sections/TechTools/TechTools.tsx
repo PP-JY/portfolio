@@ -1,6 +1,5 @@
 import {Container, Typography, Grid, Divider} from '@mui/material';
-import { useContext, useEffect } from 'react';
-import {ColorModeContext} from '../../../../pages/_app';
+import { useEffect } from 'react';
 import MainTitleAnimation from '../../../gsap/MainTitleAnimation';
 import {centeredStyles} from '../Perks/Perks';
 import ToolCard from './ToolCard';
@@ -9,14 +8,6 @@ import gsap from 'gsap';
 const TechTools = ({iconsArray} : any) => {
     let FrontendTools = iconsArray && iconsArray.filter((icon : any) => !icon.isBackend)
     let OtherTools = iconsArray && iconsArray.filter((icon : any) => icon.isBackend)
-
-    const colorMode = useContext(ColorModeContext)
-    // turn off "filter" mode when the theme is set to dark mode
-    const isfilterMode = (item : any) => colorMode
-        ?.mode === 'light'
-            ? false
-            : item
-                ?.filter
 
     useEffect(() => {
         MainTitleAnimation('.title1', '.title2')
@@ -53,7 +44,7 @@ const TechTools = ({iconsArray} : any) => {
                     }
                 }}
                     fontWeight='600'>
-                    Tools Of The Present And Future 
+                    Skills &amp; Tools
                 </Typography>
                 <Typography
                     variant='h2'
@@ -66,7 +57,7 @@ const TechTools = ({iconsArray} : any) => {
                         sm: '1em'
                     }
                 }}>
-                    Frontend technologies I prefer using
+                    로봇 시스템을 설계하고 만드는 데 쓰는 도구들
                 </Typography>
 
             </Grid>
@@ -86,8 +77,7 @@ const TechTools = ({iconsArray} : any) => {
                 {FrontendTools && FrontendTools.map((item : any) => {
                     return <ToolCard
                         className='toolCard1'
-                        filter={isfilterMode(item)}
-                        svg={item.svg}
+                        Icon={item.Icon}
                         title={item.title}
                         key={item.title}/>
                 })}
@@ -110,7 +100,7 @@ const TechTools = ({iconsArray} : any) => {
                         sm: '1em'
                     }
                 }}>
-                    Other technologies
+                    설계 · 진단 도구
                 </Typography>
 
             </Grid>
@@ -130,14 +120,10 @@ const TechTools = ({iconsArray} : any) => {
                 {OtherTools.map((tool : any) => {
                     return <ToolCard
                         className='toolCard2'
-                        filter={isfilterMode(tool)}
-                        svg={tool.svg}
+                        Icon={tool.Icon}
                         title={tool.title}
                         key={tool.title}/>
-                })
-           
-
-            }
+                })}
 
             </Grid>
             

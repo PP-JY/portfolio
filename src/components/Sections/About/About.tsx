@@ -58,10 +58,10 @@ const About = () => {
                             backgroundSize: '15px 13px'
                         }}></Box>
                         <Image
-                            alt='Personal Image'
+                            alt='회로 및 배선 설계 작업'
                             className='img1 '
                             layout='fill'
-                            src={`https://res.cloudinary.com/dwcu3wcol/image/upload/v1659776757/20211226_154523_-_Copy_hhy2kp.jpg`}/>
+                            src={`/images/circuit-diagram.jpg`}/>
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={12} md={7.5} lg={7}>
@@ -83,7 +83,7 @@ const About = () => {
                             }
                         }}
                             fontWeight='600'>
-                            About Me, Im Vito Medlej
+                            About Me, 박준용입니다
                         </Typography>
                         <Typography
                             variant='h2'
@@ -94,7 +94,7 @@ const About = () => {
                                 sm: '1em'
                             }
                         }}>
-                      A 20-year-old Lebanon-based software developer. I first started developing games using Unity3D, but soon realized I preferred web and mobile app development, and I&apos;ve been building and working on that for the past 3 years now.
+                      동아대학교 전기공학과 4학년(GPA 3.9, 직전 학기 4.5)으로, 전류 기반 고장 감지와 분산 제어를 중심으로 로봇 시스템을 설계합니다. 임베디드, PCB 설계, 제어 알고리즘까지 직접 구현하는 걸 좋아합니다.
 
                         </Typography>
                     </Box>
@@ -108,11 +108,11 @@ const About = () => {
                             },
                             pb:'.5em'
                         }}>
-                      Being self-taught made me appreciate education; thus, I&apos;m studying Management Information Systems simultaneously. Business and technology are both my passions.
+                      고장허용 로봇핸드로 제3회 전국 소프트웨어 성과 공유 포럼 본선에 진출했고, 현재는 팀 동전넷과 함께 무인 간병 로봇 B.SORI 프로젝트를 진행하고 있습니다.
 
                         </Typography>
                     <ReadMore>
-                    Aside from working hard, I tend to enjoy simple things like reading, petting cats, hitting the gym, and other things we humans do. If any of what I said seems interesting, then please do not hesitate to send me a message.
+                    OPIc IM2를 보유하고 있고, 고장 허용 로봇핸드 관련 특허 출원을 준비 중입니다. 새로운 프로젝트나 협업 제안은 언제든 편하게 연락 주세요.
                     </ReadMore>
                 </Grid>
             </Grid>

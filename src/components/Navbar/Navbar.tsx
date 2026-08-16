@@ -1,4 +1,4 @@
-import {AppBar,Typography,Button,IconButton} from '@mui/material';
+import {AppBar,IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import {useContext} from 'react';
@@ -9,7 +9,6 @@ import {ColorModeContext} from '../../../pages/_app';
 import Logo from '../Logo/Logo';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import { useRouter } from 'next/router';
 
 export const Links = [
     {
@@ -17,13 +16,13 @@ export const Links = [
         Icon: HomeIcon,
         url: '/'
     }, {
-        text: 'Contact',
-        Icon: ConnectWithoutContactIcon,
-        url: '/contact'
-    }, {
         text: 'Projects',
         Icon: AssignmentTurnedInIcon,
         url: '/'
+    }, {
+        text: 'Contact',
+        Icon: ConnectWithoutContactIcon,
+        url: '/contact'
     }, {
         text: 'Theme',
         Icon: DarkModeIcon,
@@ -37,7 +36,6 @@ const Navbar = ({toggleDrawer,navbarSx} : INavbar) => {
     const color = colorMode.mode === 'light'
         ? 'black'
         : 'white';
-    const router= useRouter()
     return (
         <AppBar
             sx={{
@@ -60,13 +58,6 @@ const Navbar = ({toggleDrawer,navbarSx} : INavbar) => {
                 maxWidth="lg">
 
                 <Logo color={color} toggleDrawer={toggleDrawer} colorMode={colorMode}/>
-                <Button 
-                onClick={()=>router.push('/blog')}
-                sx={{mr:'1em',fontWeight:'500',':hover':{color:'#0092ff'},color:color}}>
-                    {/* <Typography> */}
-                    Blog
-                    {/* </Typography> */}
-                </Button>
                 <IconButton
                     sx={{
                     color,

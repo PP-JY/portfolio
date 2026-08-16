@@ -1,37 +1,17 @@
 import {
     Box,
     Typography,
-    Container,
-    Button,
-    FormControl,
-    TextField
+    Container
 } from '@mui/material';
-import {useRef, useEffect, useState, useContext} from 'react';
+import {useRef, useEffect} from 'react';
 import HeroSectionAnimation from '../src/gsap/HeroSectionAnimation';
 import gsap from 'gsap'
 import {Divider} from '@mui/material';
-import Input from '../src/components/Mui/Input';
 import ContactBox from '../src/components/Contact/ContactBox';
 import Layout from '../Layout/Layout';
-import SocialMedia from '../src/components/Contact/SocialMedia';
-import emailjs from '@emailjs/browser';
-import {ColorModeContext} from './_app';
 
 const Contact = () => {
-    const colorMode = useContext(ColorModeContext)
-
     const ref = useRef();
-    const form = useRef();
-    const [status,
-        setStatus] = useState(0)
-    const [email,
-        setEmail] = useState('')
-        const color = status === 200
-        ? 'green'
-        : 'red';
-        const inputColor = colorMode.mode === 'light'
-        ? 'black'
-        : 'white';
     const q = gsap
         .utils
         .selector(ref);
@@ -45,32 +25,10 @@ const Contact = () => {
 
     }, [])
 
- 
- 
-
-
-
-    const sendEmail = async(e : any) => {
-
-        e.preventDefault();
-
-        if (!form.current) 
-            return;
-        let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!email.match(regexEmail)) {
-            setStatus(400)
-            return;
-        }
-
-        const req = await emailjs.sendForm(`service_fvka279`, 'template_veigfx8', form.current, 'lbTdA9-5crCdl733u')
-        const res = await req
-        setStatus(res ? res.status : 400)
-    };
-
     return (
         <Layout
-            title='Vito Medlej contact page'
-            desc='If you have questions or need help you can contact me at vito.medlej@gmail.com | Or Send a Message through the form.'>
+            title='박준용 — Contact'
+            desc='새로운 프로젝트나 협업 제안은 이메일로 편하게 연락 주세요.'>
 
             <Box sx={{
                 overflowX: 'hidden'
@@ -140,7 +98,7 @@ const Contact = () => {
                             pt: '1em',
                             fontWeight: '600'
                         }}>
-                            Let&apos;s achieve the impossible together
+                            같이 만들 프로젝트가 있다면
                         </Typography>
                         <Typography
                             variant='h2'
@@ -156,8 +114,7 @@ const Contact = () => {
                             maxWidth: '570px',
                             fontWeight: '300'
                         }}>
-                            If you need help or have some questions, I&apos;ll be there ready and happy to
-                            help.
+                            새로운 프로젝트나 협업, 채용 제안은 이메일로 편하게 연락 주세요.
                         </Typography>
                     </Box>
                     <Box
@@ -172,99 +129,21 @@ const Contact = () => {
                         }
                     }}>
 
-                        <Box
-                            ref={form}
-                            onSubmit={sendEmail}
-                            component='form'
-                            sx={{
-                            mt: '6em',
-                            justifyContent: 'space-between'
-                        }}>
-                            <Typography
-                                sx={{
-                                textAlign: 'center',
-                                pb: '1em',
-                                color
-                            }}>
-
-                                {status === 200
-                                    ? 'Message sent. Expect a reply soon!'
-                                    : ''}
-                                {status > 200 && 'There was an error, make sure to fill all the inputs and try again.'}
-                            </Typography>
-                            <Box
-                                sx={{
-                                display: 'flex',
-                                gap: '1em'
-                            }}>
-                                <Input name="user_name" label='Name'/>
-                                <Input name="user_phone" type='number' label='Phone'/>
-                            </Box>
-                            {/* <Input name="user_email" type='email' label='Email' mt='1em'/> */}
-
-                            <TextField
-                                name={'user_email'}
-                                type={'email'}
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                sx={{
-                                color: inputColor || 'black',
-                                input: {
-                                    color: inputColor || 'black'
-                                },
-                                width: '100%',
-                                mt: '1em'
-                            }}
-                                label={'Email'}
-                                variant="outlined"/>
-
-                            <Input name="message" label='Subject' mt='1em' multi={true}/>
-
-                            <Button
-                                type='submit'
-                                className='loadMore'
-                                variant='contained'
-                                sx={{
-                                display: 'flex',
-                                margin: '4em auto ',
-                                padding: '.5em 3.5em',
-                                width: {
-                                    xs: '100%',
-                                    sm: '250px'
-                                },
-                                background: 'transparent',
-                                border: '1px solid',
-                                color: '#0092ff',
-                                ':hover': {
-                                    border: '1px solid transparent'
-                                }
-                            }}>
-                                Send
-                            </Button>
-
-                        </Box>
-
-                        <Divider/>
+                        <Divider sx={{mt: '6em'}}/>
                         <Box sx={{
                             my: '3em'
                         }}>
 
-                            <ContactBox 
-                            href='mailto:vito.medlej@gmail.com'
+                            <ContactBox
+                            href='mailto:russiaassa63@naver.com'
                             target='_blank'
-                            t1='Get in touch' t2='Email Address' t3='vito.medlej@gmail.com'/>
-                            <ContactBox 
-                            href={`https://www.google.com/maps/place/Lebanon/data=!4m2!3m1!1s0x151f17028422aaad:0xcc7d34096c00f970?sa=X&ved=2ahUKEwiK1JSG9or9AhXfUaQEHdUJC40Q8gF6BAgIEAI`}
-                            target='_blank'
-                            t1='Location'
-                             t2='Currently living in' t3='Lebanon/Beirut'/>
-                            <ContactBox 
-                            target='_blank'
-                            href={'https://wa.me/96181826445'}
-                            t1='Contact Directly ' t2='Phone Number' t3='+961/ 81826445'/>
+                            t1='Get in touch' t2='Email Address' t3='russiaassa63@naver.com'/>
+                            <ContactBox
+                            target='_self'
+                            href={'#'}
+                            t1='Location' t2='소속' t3='동아대학교 전기공학과'/>
                         </Box>
                     </Box>
-                    <SocialMedia/>
 
                 </Container>
             </Box>

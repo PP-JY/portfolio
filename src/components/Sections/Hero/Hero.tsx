@@ -56,8 +56,8 @@ const Hero = () => {
                             pt: '1em',
                             fontWeight: '600'
                         }}>
-                      
-                        The place where your business expands
+
+                        고장 나도 멈추지 않는 시스템을 만듭니다
                         </Typography>
                         <Typography
                             variant='h2'
@@ -72,7 +72,7 @@ const Hero = () => {
                             maxWidth: '570px',
                             fontWeight: '300'
                         }}>
-                           Hey there! Call me Vito Medlej. I enjoy creating kickass websites and web/mobile apps, ones that suit your desires and needs using latest technologies and cleanest design patterns. 
+                           동아대학교 전기공학과 4학년 박준용입니다. 전류 기반 고장 감지와 분산 제어로 로봇이 멈추지 않게 만드는 일을 합니다. 임베디드부터 PCB, 제어 알고리즘까지 직접 설계하고 구현합니다.
                         </Typography>
 
                         <Box
@@ -96,9 +96,9 @@ const Hero = () => {
                                 duration: 2,
                                 scrollTo: `#ProjectSection`
                             })}>
-                                View Projects
+                                프로젝트 보기
                             </Button>
-                        <a href={`https://drive.google.com/drive/u/0/my-drive`} rel="noreferrer" target='_blank' >
+                        <a href={`mailto:russiaassa63@naver.com`} rel="noreferrer" target='_blank' >
 
                             <Button
                                 className='b2'
@@ -113,9 +113,9 @@ const Hero = () => {
                                 }
                             }}
                                 variant='text'>
-                                
+
                                 <Typography fontSize='14px'>
-                                    View Resume
+                                    연락하기
                                 </Typography>
                             </Button>
                             </a>
@@ -178,8 +178,8 @@ const Hero = () => {
                                 zIndex: '2'
                             }}
                                 className='img1'
-                                src={`https://ucarecdn.com/150b60a1-4ef3-4ec8-8f1a-d90a7ea26c85/-/crop/1129x1256/0,194/-/preview/3000x3000/`}
-                                alt="Personal Image"/>
+                                src={`/images/hero-hand.jpg`}
+                                alt="고장 허용 로봇핸드"/>
                             <Box
                                 className='gradientBg'
                                 sx={{
@@ -221,9 +221,9 @@ const Hero = () => {
                                     fontSize: '.85em',
                                     padding: '1em'
                                 }}>
-{`"Many ideas grow better when transplanted into another mind than the one where they sprang up."
+{`"고장 감지 → 자동 그립 재구성까지 0.08초"
 
-– Oliver Wendell Holmes`}
+분산 제어 기반 고장 허용 로봇핸드`}
                                 </Typography>
 
                             </Box>

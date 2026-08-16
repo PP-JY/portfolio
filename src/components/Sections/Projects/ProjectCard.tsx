@@ -67,7 +67,16 @@ const ProjectCard = ({
                 position: 'relative'
             }}>
 
-                <img alt='Project Image' className='img1' src={`${img}`}/>
+                {img
+                    ? <img alt='Project Image' className='img1' src={`${img}`} style={{width: '100%', height: '100%', objectFit: 'cover'}}/>
+                    : <Box sx={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '6px',
+                        backgroundColor: '#1a1a1a',
+                        backgroundImage: 'radial-gradient(#333 1.5px, transparent 1.5px)',
+                        backgroundSize: '18px 18px'
+                    }}/>}
             </Box>
             <Box
                 ref={ref}
@@ -135,7 +144,7 @@ const ProjectCard = ({
                         flexWrap: 'wrap',
                         mt: '1em'
                     }}>
-                        <a href={`${siteUrl}`} rel="noreferrer" target="_blank">
+                        {siteUrl && <a href={`${siteUrl}`} rel="noreferrer" target="_blank">
 
                             <Button
                                 variant='contained'
@@ -146,11 +155,11 @@ const ProjectCard = ({
                                 border: '1px solid #0092ff'
                             }}>
                                 <Typography fontSize='12px'>
-                                    Live Site
+                                    시연 영상
                                 </Typography>
                             </Button>
-                        </a>
-                        <a href={`${repoUrl}`} rel="noreferrer" target="_blank">
+                        </a>}
+                        {repoUrl && <a href={`${repoUrl}`} rel="noreferrer" target="_blank">
 
                             <Button
                                 variant='text'
@@ -163,10 +172,10 @@ const ProjectCard = ({
                                 }
                             }}>
                                 <Typography fontSize='12px'>
-                                    Check Code
+                                    자세히 보기
                                 </Typography>
                             </Button>
-                        </a>
+                        </a>}
 
                     </Box>
                 </Box>
