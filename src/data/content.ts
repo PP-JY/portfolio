@@ -36,7 +36,7 @@ export const projects = [
     title: "Fault-Tolerant Robot Hand",
     subtitle: "분산 제어 기반 고장 허용 로봇핸드",
     period: "2026",
-    award: "제3회 전국 소프트웨어 성과 공유 포럼 본선",
+    award: "제3회 전국대학 소프트웨어 성과 공유 포럼 본선 발표",
     description:
       "손목의 전류 센서로 구동 전류를 실시간 감시하다가 고장이 발생하면, 대기 중이던 손가락이 0.08초 안에 보조 파지에 투입되어 물체를 놓지 않습니다. MediaPipe로 추출한 21개 손 랜드마크를 로봇 좌표계로 변환해 실시간 미러링 제어를 구현했습니다.",
     highlights: [
@@ -48,12 +48,14 @@ export const projects = [
     stack: ["Raspberry Pi", "ESP32", "MediaPipe", "Python", "C++"],
     images: [
       { src: "/images/hero-hand.jpg", alt: "고장 허용 로봇핸드 전체" },
+      { src: "/images/forum-presentation.jpg", alt: "제3회 전국대학 소프트웨어 성과 공유 포럼 발표 현장" },
       { src: "/images/hand-peace.jpg", alt: "로봇핸드 손가락 구동" },
       { src: "/images/mediapipe-demo.jpg", alt: "MediaPipe 손 인식 데모" },
-      { src: "/images/hand-point.jpg", alt: "로봇핸드 검지 구동" },
     ],
-    link: "https://youtube.com/shorts/f4VqWtzXo70?si=y7pF0E3wiann5Esl",
-    linkLabel: "시연 영상",
+    links: [
+      { href: "https://youtu.be/xnEoqGTqkqM", label: "포럼 발표 영상" },
+      { href: "https://youtube.com/shorts/f4VqWtzXo70?si=y7pF0E3wiann5Esl", label: "시연 영상" },
+    ],
   },
   {
     id: "bsori",
@@ -69,8 +71,7 @@ export const projects = [
     ],
     stack: ["AMR", "6-axis Arm", "Sensor Fusion"],
     images: [],
-    link: "",
-    linkLabel: "",
+    links: [],
   },
 ];
 
@@ -85,7 +86,7 @@ export const strengths = [
   },
   {
     title: "팀 협업 · 발표",
-    body: "캡스톤과 대학 연합 프로젝트에서 설계를 나누고 발표해왔습니다. 전국 소프트웨어 성과 공유 포럼 본선 진출 경험이 있습니다.",
+    body: "캡스톤과 대학 연합 프로젝트에서 설계를 나누고 발표해왔습니다. 2026년 제3회 전국대학 소프트웨어 성과 공유 포럼(부산) 본선에서 팀 대표로 직접 발표했습니다.",
   },
 ];
 
@@ -101,7 +102,7 @@ export const stack = [
 export const about = {
   paragraphs: [
     "동아대학교 전기공학과 4학년(GPA 3.9, 직전 학기 4.5)으로, 전류 기반 고장 감지와 분산 제어를 중심으로 로봇 시스템을 설계합니다. 임베디드, PCB 설계, 제어 알고리즘까지 직접 구현하는 걸 좋아합니다.",
-    "고장 허용 로봇핸드로 제3회 전국 소프트웨어 성과 공유 포럼 본선에 진출했고, 현재는 팀 동전넷과 함께 무인 간병 로봇 B.SORI 프로젝트를 진행하고 있습니다.",
+    "고장 허용 로봇핸드로 제3회 전국대학 소프트웨어 성과 공유 포럼(2026, 부산) 본선에 진출해 팀 대표로 발표했고, 현재는 팀 동전넷과 함께 무인 간병 로봇 B.SORI 프로젝트를 진행하고 있습니다.",
     "OPIc IM2를 보유하고 있고, 고장 허용 로봇핸드 관련 특허 출원을 준비 중입니다. 새로운 프로젝트나 협업 제안은 언제든 편하게 연락 주세요.",
   ],
   image: { src: "/images/circuit-diagram.jpg", alt: "회로 및 배선 설계 작업" },

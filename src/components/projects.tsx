@@ -95,16 +95,21 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {p.link && (
-                    <a
-                      href={p.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-foreground"
-                    >
-                      {p.linkLabel}
-                      <ArrowUpRight size={16} />
-                    </a>
+                  {p.links.length > 0 && (
+                    <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      {p.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-foreground"
+                        >
+                          {l.label}
+                          <ArrowUpRight size={16} />
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
               </article>
