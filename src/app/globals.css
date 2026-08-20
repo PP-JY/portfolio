@@ -46,6 +46,95 @@ body {
   color: #04222a;
 }
 
+/* Entrance rise, played on a clock in the hero and scrubbed by scroll below. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 var(--rise-y, 16px);
+    filter: blur(var(--rise-blur, 8px));
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+/* Above the fold there is no scroll to key off, so it runs on time.
+   `both` holds the from-state through the delay — no flash of final position. */
+.rise {
+  animation: rise 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
+}
+
+/* Scroll reveals ride the view timeline instead of an IntersectionObserver.
+   Guarded: where view() is unsupported the element just renders visible, which
+   is why the from-state lives in the keyframes and not on the element. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      /* Stagger shifts only the start. The end stays pinned inside `entry` so
+         every element — including the last on the page, which can never scroll
+         far enough to finish a `cover` range — reaches 100% and stays there.
+         A reveal that never completes is an invisible section. */
+      animation-range: entry calc(8% + var(--reveal-shift, 0%)) entry 92%;
+    }
+  }
+
+  /* Read progress. Unsupported browsers keep scale 0 and never paint it. */
+  .scroll-progress {
+    transform-origin: 0 50%;
+    scale: 0 1;
+    animation: progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progress {
+  to {
+    scale: 1 1;
+  }
+}
+
+/* Mobile nav overlay. `allow-discrete` keeps display in the transition so the
+   close still animates without React holding the node mounted. */
+.menu-overlay {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, display 0.2s allow-discrete;
+}
+
+.menu-overlay[data-open="true"] {
+  display: block;
+  opacity: 1;
+}
+
+@starting-style {
+  .menu-overlay[data-open="true"] {
+    opacity: 0;
+  }
+}
+
+/* Attaching the animation only in the open state is what restarts it on
+   toggle — the overlay itself never unmounts. */
+.menu-overlay[data-open="true"] a {
+  animation: rise 0.35s cubic-bezier(0.21, 0.47, 0.32, 0.98) both;
+}
+
+@media (min-width: 768px) {
+  .menu-overlay[data-open="true"] {
+    display: none;
+  }
+}
+
+/* Thumbnail morphs into the full-size shot instead of cross-fading. */
+::view-transition-old(zoom-shot),
+::view-transition-new(zoom-shot) {
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
 /* Signal pulse traveling down an architecture connector. */
 @keyframes flow {
   0% {
@@ -72,5 +161,13 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* View transition pseudos live outside the document tree, so the blanket
+     `*` rule above never reaches them. */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

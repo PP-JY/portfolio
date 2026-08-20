@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
+import type { CSSProperties } from "react";
 import { ArrowDown, Mail } from "lucide-react";
 import { Particles } from "@/components/ui/particles";
 import { GridPattern } from "@/components/ui/grid-pattern";
@@ -23,47 +21,45 @@ export function Hero() {
       />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 flex items-center gap-2.5 font-mono text-[11px] tracking-wider text-muted sm:text-xs"
+        <div
+          style={{ "--rise-y": "0px", "--rise-blur": "0px" } as CSSProperties}
+          className="rise mb-8 flex items-center gap-2.5 font-mono text-[11px] tracking-wider text-muted sm:text-xs"
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
           </span>
           <span className="uppercase">{profile.affiliation}</span>
-        </motion.div>
+        </div>
 
         <h1 className="font-semibold leading-[1.12] tracking-tight [font-size:clamp(1.9rem,8vw,4.25rem)]">
           {lines.map((line, i) => (
-            <motion.span
+            <span
               key={line}
-              initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.7, delay: 0.12 * i, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="block"
+              style={
+                {
+                  "--rise-y": "24px",
+                  "--rise-blur": "10px",
+                  animationDelay: `${0.12 * i}s`,
+                } as CSSProperties
+              }
+              className="rise block"
             >
               {line}
-            </motion.span>
+            </span>
           ))}
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="mt-7 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base"
+        <p
+          style={{ "--rise-blur": "0px", animationDelay: "0.45s" } as CSSProperties}
+          className="rise mt-7 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base"
         >
           {profile.summary}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.58 }}
-          className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+        <div
+          style={{ "--rise-blur": "0px", animationDelay: "0.58s" } as CSSProperties}
+          className="rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
         >
           <a
             href="#work"
@@ -79,14 +75,12 @@ export function Hero() {
             <Mail size={16} />
             연락하기
           </a>
-        </motion.div>
+        </div>
 
         {/* Measured figures — the substance behind the headline. */}
-        <motion.dl
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.75 }}
-          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:mt-24 sm:grid-cols-4"
+        <dl
+          style={{ "--rise-y": "20px", "--rise-blur": "0px", animationDelay: "0.75s" } as CSSProperties}
+          className="rise mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border sm:mt-24 sm:grid-cols-4"
         >
           {stats.map((s) => (
             <div key={s.label} className="bg-surface p-4 sm:p-5">
@@ -100,7 +94,7 @@ export function Hero() {
               </p>
             </div>
           ))}
-        </motion.dl>
+        </dl>
       </div>
     </section>
   );

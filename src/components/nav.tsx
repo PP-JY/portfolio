@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Menu, X } from "lucide-react";
 import { nav, profile } from "@/data/content";
 
@@ -61,38 +60,45 @@ export function Nav() {
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+
+        {/* Read progress, scrubbed by the document scroll — no listener. */}
+        <div
+          aria-hidden
+          className="scroll-progress absolute inset-x-0 bottom-0 h-px bg-accent"
+        />
       </header>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
-          >
-            <nav className="flex h-full flex-col justify-center gap-2 px-8">
-              {nav.map((item, i) => (
-                <motion.a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * i + 0.05, duration: 0.35 }}
-                  className="border-b border-border py-5 text-2xl font-medium tracking-tight"
-                >
-                  <span className="mr-3 font-mono text-sm text-accent">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {item.label}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Kept mounted so the close can transition; `display` rides the
+          transition via allow-discrete, which is what used to need
+          AnimatePresence. */}
+      <div
+        data-open={open}
+        inert={!open}
+        className="menu-overlay fixed inset-0 z-40 bg-background/95 backdrop-blur-xl"
+      >
+        <nav className="flex h-full flex-col justify-center gap-2 px-8">
+          {nav.map((item, i) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              style={
+                {
+                  "--rise-y": "0px",
+                  "--rise-blur": "0px",
+                  animationDelay: `${0.05 * i + 0.05}s`,
+                } as CSSProperties
+              }
+              className="border-b border-border py-5 text-2xl font-medium tracking-tight"
+            >
+              <span className="mr-3 font-mono text-sm text-accent">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
@@ -11,10 +12,47 @@ type Shot = { src: string; alt: string };
 export function Projects() {
   const [zoom, setZoom] = useState<Shot | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  // The thumbnail the current zoom came from, so closing morphs back into it.
+  const originRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    if (zoom) dialogRef.current?.showModal();
-  }, [zoom]);
+  /**
+   * Runs `update` inside a view transition when the browser has one. The
+   * transition name is moved onto the element that owns it *within* `update`:
+   * holding it on both the thumbnail and the dialog at once would be a
+   * duplicate name, which aborts the transition.
+   */
+  const transition = (update: () => void, after?: () => void) => {
+    if (!document.startViewTransition) {
+      update();
+      after?.();
+      return;
+    }
+    document.startViewTransition(update).finished.finally(() => after?.());
+  };
+
+  const openShot = (shot: Shot, origin: HTMLElement) => {
+    originRef.current = origin;
+    origin.style.viewTransitionName = "zoom-shot";
+    transition(() => {
+      origin.style.viewTransitionName = "";
+      flushSync(() => setZoom(shot));
+      dialogRef.current?.showModal();
+    });
+  };
+
+  const closeShot = () => {
+    const origin = originRef.current;
+    transition(
+      () => {
+        dialogRef.current?.close();
+        flushSync(() => setZoom(null));
+        if (origin) origin.style.viewTransitionName = "zoom-shot";
+      },
+      () => {
+        if (origin) origin.style.viewTransitionName = "";
+      },
+    );
+  };
 
   return (
     <section id="work" className="relative border-t border-border py-20 sm:py-28">
@@ -34,7 +72,7 @@ export function Projects() {
                   <div className="grid gap-px bg-border sm:grid-cols-[1.6fr_1fr]">
                     <button
                       type="button"
-                      onClick={() => setZoom(p.images[0])}
+                      onClick={(e) => openShot(p.images[0], e.currentTarget)}
                       aria-label={`${p.images[0].alt} 원본 보기`}
                       className="relative aspect-[4/3] cursor-zoom-in overflow-hidden bg-surface-2 sm:aspect-auto sm:min-h-[340px]"
                     >
@@ -52,7 +90,7 @@ export function Projects() {
                         <button
                           type="button"
                           key={img.src}
-                          onClick={() => setZoom(img)}
+                          onClick={(e) => openShot(img, e.currentTarget)}
                           aria-label={`${img.alt} 원본 보기`}
                           className="relative aspect-square cursor-zoom-in overflow-hidden bg-surface-2 sm:aspect-auto"
                         >
@@ -139,9 +177,14 @@ export function Projects() {
       <dialog
         ref={dialogRef}
         onClose={() => setZoom(null)}
+        onCancel={(e) => {
+          // ESC. Let the transition drive the close instead of the browser.
+          e.preventDefault();
+          closeShot();
+        }}
         onClick={(e) => {
           // 백드롭(=dialog 자신)을 눌렀을 때만 닫는다.
-          if (e.target === dialogRef.current) dialogRef.current.close();
+          if (e.target === dialogRef.current) closeShot();
         }}
         className="m-auto max-h-none max-w-none bg-transparent p-0 backdrop:bg-black/85 backdrop:backdrop-blur-sm"
       >
@@ -152,11 +195,12 @@ export function Projects() {
             <img
               src={zoom.src}
               alt={zoom.alt}
+              style={{ viewTransitionName: "zoom-shot" }}
               className="block max-h-[92vh] max-w-[94vw] object-contain"
             />
             <button
               type="button"
-              onClick={() => dialogRef.current?.close()}
+              onClick={closeShot}
               aria-label="닫기"
               className="absolute right-2 top-2 rounded-full bg-black/60 p-2 text-white transition-colors hover:bg-black/85"
             >

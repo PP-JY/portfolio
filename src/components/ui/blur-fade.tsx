@@ -1,33 +1,26 @@
-"use client";
+import type { CSSProperties, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-import { motion, useInView } from "motion/react";
-import { useRef, type ReactNode } from "react";
-
-/** Scroll-triggered reveal: blur + rise, fired once per element. */
+/**
+ * Scroll reveal driven by the CSS view timeline — no observer, no client JS.
+ * `delay` shifts where in the element's entry the reveal happens, which is how
+ * a stagger survives on a timeline that has no clock to delay against.
+ */
 export function BlurFade({
   children,
   className,
   delay = 0,
-  y = 16,
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
-  y?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  // Bottom-only shrink — a uniform negative margin narrows the sides too.
-  const inView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
-
   return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, y, filter: "blur(8px)" }}
-      animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
-      transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+    <div
+      className={cn("reveal", className)}
+      style={{ "--reveal-shift": `${delay * 30}%` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
